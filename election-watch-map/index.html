@@ -201,7 +201,7 @@
 				      	.style("transform", "translate("+(width/2.1)+"px, "+(height - 30)+"px)");
 
 				    var legendSpacing = 15;
-				    var legendWidth = 2.1;
+				    var legendWidth = 2.2;
 				    var legend = svg
 				      .append("g")
 				        .attr("id","legendContainer")
@@ -212,12 +212,12 @@
 				        .attr('class', 'legend')
 				        .attr('transform', function(d, i) {
 				        	if(d == "Election") {
-				        		var xPos = 18;
+				        		var xPos = 32;
 				        	}
 				        	else {
 				        		var xPos = 0;
 				        	}
-				        	var x = i * 118 + (width / legendWidth) + xPos;
+				        	var x = i * 125 + (width / legendWidth) + xPos;
                 			var y = height - 15;
 				            return 'translate(' + x + ',' + y + ')';
 				      });
