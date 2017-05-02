@@ -12,6 +12,7 @@
 		<style type="text/css">
 			body {
 				font-family: "source-sans-pro",sans-serif;
+				color: #353535;
 			}
 
 			svg {
@@ -73,13 +74,17 @@
 				display: block;
 			}
 
+			.instructions {
+				margin-bottom: 5px;
+			}
 
 		</style>
 	</head>
 	<body>
 
-
-	<div id="container"></div>
+	<div id="container">
+		<div class="instructions">Scroll over countries to view election or referendum dates. Click on a country to learn more.</div>
+	</div>
 	<div class="tooltip"></div>
 		
 
@@ -233,8 +238,6 @@
 				      .attr('x', 12)
 				      .attr('y', 20 - legendSpacing)
 				      .text(function(d) { return d; });
-
-					
 			
 				});
 			}
