@@ -7,8 +7,12 @@
 		<script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
 		<script src="//d3js.org/topojson.v1.min.js"></script>
 		<script src="https://apis.google.com/js/api.js"></script>
+		<script src="https://use.typekit.net/zyg0duc.js"></script>
+		<script>try{Typekit.load({ async: true });}catch(e){}</script>
 		<style type="text/css">
-
+			body {
+				font-family: "source-sans-pro",sans-serif;
+			}
 
 			svg {
 				background-color: #b8d6e2;
@@ -45,7 +49,7 @@
 				fill: #fff;
 				opacity: 0.8;
 				height: 30px;
-				width: 50%;
+				width: 55%;
 			}
 
 			div.tooltip {	
@@ -129,7 +133,7 @@
 				// Color Scales
 				var color = d3.scale.ordinal()
 			      .domain(electionTypes)
-			      .range(['#51746d', '#115175', '#0faa91']);
+			      .range(['#005f50', '#115175', '#0faa91']);
 
 				//Define map projection
 				var projection = d3.geo.mercator() //utiliser une projection standard pour aplatir les pôles, voir D3 projection plugin
@@ -192,18 +196,46 @@
 				   			}
 					   	});
 
-					svg.append("g")
-						.append("rect")
-							.attr("class", "legend-container")
-							.style("transform", "translate("+(width/2)+"px, "+(height - 30)+"px)");
+					// Legend
+					svg.append("rect")
+				      	.attr("class","legend-container")
+				      	.style("transform", "translate("+(width/2.1)+"px, "+(height - 30)+"px)");
 
-					// svg.selectAll(".subunit-label")
-					//     .data(json.features)
-					//   .enter().append("text")
-					//     .attr("class", function(d) { return "subunit-label " + d.id; })
-					//     .attr("transform", function(d) { if(d.properties.continent == "Europe") { console.log(d.properties.name); console.log(path.centroid(d)); return "translate(" + path.centroid(d) + ")"; }})
-					//     .attr("dy", ".35em")
-					//     .text(function(d) { if(d.properties.continent == "Europe") { return d.properties.abbrev; }});
+				    var legendSpacing = 15;
+				    var legendWidth = 2.1;
+				    var legend = svg
+				      .append("g")
+				        .attr("id","legendContainer")
+				      .selectAll("g")
+				      .data(color.domain())
+				      .enter()
+				      .append('g')
+				        .attr('class', 'legend')
+				        .attr('transform', function(d, i) {
+				        	if(d == "Election") {
+				        		var xPos = 18;
+				        	}
+				        	else {
+				        		var xPos = 0;
+				        	}
+				        	var x = i * 118 + (width / legendWidth) + xPos;
+                			var y = height - 15;
+				            return 'translate(' + x + ',' + y + ')';
+				      });
+
+				    // Draw rects, and color them by original_index
+				    legend.append('circle')
+				      .classed('scaleCircle', true)
+				      .attr('r', 5)
+				      .style('fill', color);
+				   
+				    legend.append('text')
+				      .classed('scaleCircleLabel', true)
+				      .attr('x', 12)
+				      .attr('y', 20 - legendSpacing)
+				      .text(function(d) { return d; });
+
+					
 			
 				});
 			}
