@@ -205,7 +205,7 @@
 					   	})
 					   	.on("click", function(d) {
 					   		if(data[d.properties.iso_a3] != undefined) {
-				   				location.href = data[d.properties.iso_a3].url;
+				   				window.parent.location.href = data[d.properties.iso_a3].url;
 				   			}
 					   	});
 
