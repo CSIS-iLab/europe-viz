@@ -143,8 +143,8 @@
 		  // Color Scales
 		  var color = d3.scale
 		    .ordinal()
-		    .domain(electionTypes)
-		    .range(["#005f50", "#115175", "#0faa91"]);
+		    .domain(electionTypes.sort((a,b)=>a.toLowerCase().split("election")[0].length-b.toLowerCase().split("election")[0].length))
+		    .range(["#005f50", "#0faa91", "#115175"]);
 
 		  //Define map projection
 		  var projection = d3.geo
