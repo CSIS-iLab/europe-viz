@@ -1,0 +1,40 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Franklin Gothic Medium", Tahoma, sans-serif;
+}
+
+.container {
+  color: #333;
+  text-align: center;
+}
+
+h1 {
+  font-weight: normal;
+}
+
+li {
+  display: inline-block;
+  font-size: 1em;
+  list-style-type: none;
+  padding: .5em 1em 1em;
+  text-transform: uppercase;
+  color: #666;
+}
+
+li:nth-of-type(2) {
+border-left: 2px solid #e5eff6;
+border-right: 2px solid #e5eff6;
+padding-left: 1.5em;
+padding-right:1.5em;
+}
+
+li span {
+  display: block;
+  color: #115175;
+  font-size: 3.5rem;
+}
