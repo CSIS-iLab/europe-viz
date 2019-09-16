@@ -1,34 +1,48 @@
 const second = 1000,
-      minute = second * 60,
-      hour = minute * 60,
-      day = hour * 24;
+  minute = second * 60,
+  hour = minute * 60,
+  day = hour * 24;
 
 
 
 //console.log(endDate);
 
-      let endD = new Date('Nov 1, 2019 00:00:00');
-      let endDate = endD.toLocaleString(undefined, { timeZone: 'Europe/Brussels' });
+let endD = new Date('Nov 1, 2019 00:00:00');
+let endDate = endD.toLocaleString(undefined, {
+  timeZone: 'Europe/Brussels'
+});
 
 let countDown = new Date(endDate).getTime(),
-    x = setInterval(function() {
+  x = setInterval(function() {
 
-      let startD = new Date();
-      let startDate = startD.toLocaleString(undefined, { timeZone: 'Europe/Brussels' });
+    let startD = new Date();
+    let startDate = startD.toLocaleString(undefined, {
+      timeZone: 'Europe/Brussels'
+    });
 
 
-      let now = new Date(startDate).getTime(),
-          distance = countDown - now;
+    let now = new Date(startDate).getTime(),
+      distance = countDown - now;
+    let daysOutput = Math.floor(distance / (day));
+    let hoursOutput = Math.floor((distance % (day)) / (hour));
+    let minutesOutput = Math.floor((distance % (hour)) / (minute));
 
-      document.getElementById('days').innerText = Math.floor(distance / (day)),
-        document.getElementById('hours').innerText = Math.floor((distance % (day)) / (hour)),
-        document.getElementById('minutes').innerText = Math.floor((distance % (hour)) / (minute))//,
-        //document.getElementById('seconds').innerText = Math.floor((distance % (minute)) / second);
 
-      //do something later when date is reached
-      //if (distance < 0) {
-      //  clearInterval(x);
-      //  'IT'S MY BIRTHDAY!;
-      //}
+    function checkdigits(test) {
+      if (test.toString().length == 1) {
+        test = "0" + test;
 
-    }, second)
+      } else {
+        test = test.toString();
+      }
+      return test
+    }
+
+    document.getElementById('days').querySelector('tspan').textContent = checkdigits(daysOutput),
+      document.getElementById('hours').querySelector('tspan').textContent = hoursOutput,
+      document.getElementById('minutes').querySelector('tspan').textContent = checkdigits(minutesOutput) //,
+
+    //document.getElementById('seconds').innerText = Math.floor((distance % (minute)) / second);
+
+
+  }, second)
