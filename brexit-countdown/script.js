@@ -39,7 +39,7 @@ let countDown = new Date(endDate).getTime(),
     }
 
     document.getElementById('days').querySelector('tspan').textContent = checkdigits(daysOutput),
-      document.getElementById('hours').querySelector('tspan').textContent = hoursOutput,
+      document.getElementById('hours').querySelector('tspan').textContent = checkdigits(hoursOutput),
       document.getElementById('minutes').querySelector('tspan').textContent = checkdigits(minutesOutput) //,
 
     //document.getElementById('seconds').innerText = Math.floor((distance % (minute)) / second);
