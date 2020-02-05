@@ -5,7 +5,7 @@ const second = 1000,
 
 //console.log(endDate);
 
-let endD = new Date("Jan 31, 2020 00:00:00");
+let endD = new Date("Dec 31, 2020 00:00:00");
 let endDate = endD.toLocaleString(undefined, {
   timeZone: "Europe/Brussels"
 });
@@ -34,13 +34,13 @@ let countDown = new Date(endDate).getTime(),
 
     (document
       .getElementById("days")
-      .querySelector("tspan").textContent = checkdigits(daysOutput)),
+      .querySelector("span").textContent = checkdigits(daysOutput)),
       (document
         .getElementById("hours")
-        .querySelector("tspan").textContent = checkdigits(hoursOutput)),
+        .querySelector("span").textContent = checkdigits(hoursOutput)),
       (document
         .getElementById("minutes")
-        .querySelector("tspan").textContent = checkdigits(minutesOutput)); //,
+        .querySelector("span").textContent = checkdigits(minutesOutput)); //,
 
     //document.getElementById('seconds').innerText = Math.floor((distance % (minute)) / second);
   }, second);

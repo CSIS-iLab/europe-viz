@@ -1,0 +1,62 @@
+* {
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+#countdown {
+  width: 420px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#countdown--head {
+  display: block;
+  font-size: 17px;
+  letter-spacing: .02em;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+}
+
+#countdown--clock {
+  margin: 0 auto;
+  display: inline-flex;
+  align-items: center;
+  background: #115175;
+  padding: 0px 40px;
+  border-radius: 60px;
+  font-size: 15px;
+  color: rgba(255, 255, 255, .60);
+  text-align: center;
+}
+
+#countdown--clock span {
+  font-size: 53px;
+  color: #fff;
+  font-weight: 400;
+  line-height: 1;
+}
+
+#countdown--bigben-wrapper {
+  height: 110px;
+  display: block;
+  overflow: visible;
+  position: relative;
+}
+
+#countdown--bigben {
+  position: relative;
+  display: block;
+  top: -32px;
+}
+
+.timeSegment {
+  padding: 0px 16px;
+}
+
+.timeSegment:not(:last-of-type) {
+  border-right: 2.5px solid rgba(255, 255, 255, .20);
+}
+
+#countdown--container {}
