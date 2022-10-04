@@ -97,38 +97,29 @@
 		var electionTypes = [];
 
 		// Load in JSON for Country Data
-
 		var spreadsheetID = "1Dh3d3sPbaN976ASb2r9jM_epzZB2gAxrohcGeZDYlS8";
-
-		var spreadsheetURL =
-		  "https://spreadsheets.google.com/feeds/list/" +
-		  spreadsheetID +
-		  "/1/public/values?alt=json";
-
-		fetch(spreadsheetURL)
+    const URL = `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetID}/values/Sheet1?key=AIzaSyBXuQRRw4K4W8E4eGHoSFUSrK-ZwpD4Zz4&majorDimension=ROWS`
+		fetch(URL)
 		  .then(function(resp) {
 		    return resp.json();
 		  })
 		  .then(function(json) {
 		    data = {};
-
-		    json.feed.entry.forEach(function(r) {
+        const columnNames = json.values.shift()
+        const lowerCaseColumnNames = columnNames.map( (name) => name.toLowerCase())
+		    json.values.forEach(function(r) {
 		      var row = r;
 		      var rowData = {};
-
-		      Object.keys(row).forEach(function(c, i) {
-		        var column = c;
-		        if (column.indexOf("gsx$") > -1) {
-		          var columnName = column.replace("gsx$", "");
-		          rowData[columnName] = row[column]["$t"];
-
-		          if (
-		            columnName === "category" &&
-		            electionTypes.indexOf(row[column]["$t"]) < 0
-		          )
-		            electionTypes.push(row[column]["$t"]);
-		        }
-		      });
+          
+          row.forEach( ( ele, i ) => {
+            rowData[lowerCaseColumnNames[i]] = ele
+            if (
+              lowerCaseColumnNames[i] === "category" &&
+              electionTypes.indexOf(rowData[lowerCaseColumnNames[i]]) < 0
+            ) {
+              electionTypes.push(rowData[lowerCaseColumnNames[i]])
+            }
+          })
 		      data[rowData["iso-3"]] = rowData;
 		    });
 
@@ -275,8 +266,6 @@
 		      });
 		  });
 		}
-
-
 		</script>
 	</body>
 </html>
