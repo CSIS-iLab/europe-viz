@@ -4,8 +4,7 @@ var electionTypes = [];
 
 // Load in JSON for Country Data
 const spreadsheetID = "1Dh3d3sPbaN976ASb2r9jM_epzZB2gAxrohcGeZDYlS8";
-// const spreadsheetTabName = 'Sheet1'
-const spreadsheetTabName = '2023'
+const spreadsheetTabName = "2023";
 const URL = `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetID}/values/${spreadsheetTabName}?key=AIzaSyBXuQRRw4K4W8E4eGHoSFUSrK-ZwpD4Zz4&majorDimension=ROWS`;
 fetch(URL)
   .then(function (resp) {
